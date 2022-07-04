@@ -1,19 +1,29 @@
 # react-native-seon
+
 Seon SDK for React Native
+
+Based on the publicly available native SDKs from [SEON Fraud API](https://docs.seon.io/api-reference#fraud-api):
+
+- [Android](https://github.com/seontechnologies/seon-android-sdk-public)
+- [iOS](https://github.com/seontechnologies/seon-ios-sdk-public)
+
 ## Installation
 
 ```sh
-npm install react-native-seon
+yarn add smarkets/react-native-seon#vX.X.X
 ```
 
 ## Usage
 
 ```js
-import { multiply } from "react-native-seon";
+import RNSeon from "react-native-seon";
 
-// ...
+// Optional configuration
+await RNSeon.setSessionId("CUSTOM_SESSION_ID");
+await RNSeon.setLoggingEnabled(true /* or false */);
 
-const result = await multiply(3, 7);
+// Compute device fingerprint
+const fingerprint = await RNSeon.getFingerprintBase64();
 ```
 
 ## Contributing

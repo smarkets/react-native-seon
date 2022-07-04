@@ -6,7 +6,9 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo managed workflow\n';
 
-const Seon = NativeModules.Seon  ? NativeModules.Seon  : new Proxy(
+const Seon = NativeModules.Seon
+  ? NativeModules.Seon
+  : new Proxy(
       {},
       {
         get() {
@@ -15,6 +17,11 @@ const Seon = NativeModules.Seon  ? NativeModules.Seon  : new Proxy(
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return Seon.multiply(a, b);
+// for documentation please check to official iOS/Android SDK methods in readme
+interface SeonInterface {
+  setSessionId(sessionId: string): Promise<boolean>;
+  setLoggingEnabled(enabled: boolean): Promise<boolean>;
+  getFingerprintBase64(): Promise<string>;
 }
+
+export default Seon as SeonInterface;

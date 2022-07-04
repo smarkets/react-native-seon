@@ -125,6 +125,9 @@ repositories {
 dependencies {
     //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
+  implementation('io.seon.androidsdk:androidsdk:3.+') {
+    transitive = true
+  }
 // From node_modules
 }
 

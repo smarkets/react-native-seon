@@ -7,16 +7,31 @@
 @implementation Seon
 RCT_EXPORT_MODULE()
 
-// Example method
-// See // https://reactnative.dev/docs/native-modules-ios
-RCT_REMAP_METHOD(multiply,
-                 multiplyWithA:(double)a withB:(double)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(setSessionId:(NSString *)sessionId
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject)
 {
-  NSNumber *result = @(a * b);
+    [[SeonFingerprint sharedManager] setSessionId:sessionId];
+    resolve(@YES);
+}
 
-  resolve(result);
+RCT_EXPORT_METHOD(setLoggingEnabled:(BOOL)enabled
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject)
+{
+    [[SeonFingerprint sharedManager] setLoggingEnabled:enabled];
+    resolve(@YES);
+}
+
+RCT_EXPORT_METHOD(getFingerprintBase64:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject)
+{
+    @try {
+        NSString * fingerprint = [[SeonFingerprint sharedManager] fingerprintBase64];
+        resolve(@[fingerprint]);
+    } @catch (NSException *e) {
+        reject(@"fingerprintBase64", @"Failed to get fingerprint", nil);
+    }
 }
 
 // Don't compile this code when we build for the old architecture.
