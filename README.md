@@ -10,7 +10,7 @@ Based on the publicly available native SDKs from [SEON Fraud API](https://docs.s
 ## Installation
 
 ```sh
-yarn add smarkets/react-native-seon#vX.X.X
+yarn add smarkets/react-native-seon#v0.1.1
 ```
 
 ## Usage
