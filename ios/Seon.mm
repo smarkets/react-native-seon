@@ -28,7 +28,7 @@ RCT_EXPORT_METHOD(getFingerprintBase64:(RCTPromiseResolveBlock)resolve
 {
     @try {
         NSString * fingerprint = [[SeonFingerprint sharedManager] fingerprintBase64];
-        resolve(@[fingerprint]);
+        resolve(fingerprint);
     } @catch (NSException *e) {
         reject(@"fingerprintBase64", @"Failed to get fingerprint", nil);
     }
