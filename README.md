@@ -2,20 +2,28 @@
 
 SeonSDK bridge for react native
 
+Based on the publicly available native SDKs from [SEON Fraud API](https://docs.seon.io/api-reference#fraud-api):
+
+- [Android](https://github.com/seontechnologies/seon-android-sdk-public)
+- [iOS](https://github.com/seontechnologies/seon-ios-sdk-public)
+
 ## Installation
 
 ```sh
-npm install react-native-seon
+yarn add smarkets/react-native-seon#v0.2.0
 ```
 
 ## Usage
 
-```js
-import { multiply } from 'react-native-seon';
+ ```js
+import RNSeon from "react-native-seon";
 
-// ...
+// Optional configuration
+await RNSeon.setLoggingEnabled(true /* or false */);
 
-const result = await multiply(3, 7);
+// Compute device fingerprint
+await RNSeon.setSessionId("CUSTOM_SESSION_ID");
+const fingerprint = await RNSeon.getFingerprintBase64();
 ```
 
 ## Contributing

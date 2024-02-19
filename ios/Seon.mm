@@ -3,17 +3,34 @@
 @implementation Seon
 RCT_EXPORT_MODULE()
 
-// Example method
-// See // https://reactnative.dev/docs/native-modules-ios
-RCT_EXPORT_METHOD(multiply:(double)a
-                  b:(double)b
-                  resolve:(RCTPromiseResolveBlock)resolve
-                  reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(setSessionId:(NSString *)sessionId
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject)
 {
-    NSNumber *result = @(a * b);
-
-    resolve(result);
+    [[SEONFingerprint sharedManager] setSessionId:sessionId];
+    resolve(@YES);
 }
 
+RCT_EXPORT_METHOD(setLoggingEnabled:(BOOL)enabled
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject)
+{
+    [[SEONFingerprint sharedManager] setLoggingEnabled:enabled];
+    resolve(@YES);
+}
+
+RCT_EXPORT_METHOD(getFingerprintBase64:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject)
+{
+    // Compute fingerprint asynchronously
+    [[SEONFingerprint sharedManager]
+       getFingerprintBase64:^(NSString *seonFingerprint, NSError *error) {
+          if (error == nil){
+              resolve(seonFingerprint);
+          } else{
+              reject(@"error", error.localizedDescription, error);
+          }
+      }];
+}
 
 @end

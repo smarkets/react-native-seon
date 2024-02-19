@@ -17,6 +17,11 @@ const Seon = NativeModules.Seon
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return Seon.multiply(a, b);
+// for documentation please check to official iOS/Android SDK methods in readme
+interface SeonInterface {
+  setSessionId(sessionId: string): Promise<boolean>;
+  setLoggingEnabled(enabled: boolean): Promise<boolean>;
+  getFingerprintBase64(): Promise<string>;
 }
+
+export default Seon as SeonInterface;
