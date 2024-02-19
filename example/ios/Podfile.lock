@@ -944,7 +944,7 @@ PODS:
   - React-Mapbuffer (0.73.4):
     - glog
     - React-debug
-  - react-native-seon (0.1.0):
+  - react-native-seon (0.2.1):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
@@ -1354,7 +1354,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 9ac353eccf6ab54d1e0a33862ba91221d1e88460
   React-logger: 0a57b68dd2aec7ff738195f081f0520724b35dab
   React-Mapbuffer: 63913773ed7f96b814a2521e13e6d010282096ad
-  react-native-seon: a105ad5c9a761aedfd534aadfa4dcac2b4c1fd0f
+  react-native-seon: aa98ab74a84a821e315ac4a9e7a22d398c161914
   React-nativeconfig: d7af5bae6da70fa15ce44f045621cf99ed24087c
   React-NativeModulesApple: 0123905d5699853ac68519607555a9a4f5c7b3ac
   React-perflogger: 8a1e1af5733004bdd91258dcefbde21e0d1faccd
